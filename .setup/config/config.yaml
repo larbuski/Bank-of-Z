@@ -57,8 +57,8 @@ global:
   zosconnect_task_user: "{{ global.zos_admin_user }}"
 
   # Frontend (separate Liberty server - FE<APP_SHORT_NAME> on port 9445)
-  frontend_http_port: 9081
-  frontend_https_port: 9445
+  frontend_http_port: 20100  # h3n: VSI 20100 -> hypervisor 20100 (9081 is not mapped)
+  frontend_https_port: 20101  # h3n: VSI 20101 -> hypervisor 20101 (9445 is not mapped)
   frontend_task_user: "{{ global.zos_admin_user}}"
 
 

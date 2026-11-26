@@ -5,6 +5,15 @@
  */
 
 /**
+ * h3n: the external ports differ from the ports inside the z/OS guest.
+ * Frontend 20100/20101 (pass-through) -> API reachable as 20132 (9080) / 20133 (9444).
+ */
+const H3N_API_PORTS = { '20100': '20132', '20101': '20133' };
+function apiPortFor(frontendPort) {
+    return H3N_API_PORTS[frontendPort];
+}
+
+/**
  * Application Configuration
  */
 export const config = {
@@ -19,7 +28,7 @@ export const config = {
         baseUrl: window.location.port === '3001'
             ? '/api'
             : window.location.protocol + '//' + window.location.hostname + ':' +
-              (window.location.protocol === 'https:' ? '9444' : '9080') + '/api'
+              (apiPortFor(window.location.port) || (window.location.protocol === 'https:' ? '9444' : '9080')) + '/api'
     },
     defaults: {
         sortCode: '987654'

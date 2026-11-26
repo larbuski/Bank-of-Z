@@ -14,8 +14,8 @@
                 "zosmf": {
                     "type": "zosmf",
                     "properties": {
-                        // Not the default z/OSMF port (443)
-                        "port": 10443
+                        // h3n: VSI 443 is exposed as 20126
+                        "port": 20126
                     },
                     "secure": [
                         "user", "password"
@@ -24,7 +24,8 @@
                 "ssh": {
                     "type": "ssh",
                     "properties": {
-                        "port": 22
+                        // h3n: VSI 22 is exposed as 20122
+                        "port": 20122
                     },
                     "secure": [
                         "user", "password"
